@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="MVVM_Template_Project.Views.ValidationsConvertes_View"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:a="clr-namespace:Apex.Controls"
+			 xmlns:validations="clr-namespace:MVVM_Template_Project.Auxiliary.Validations"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="500" d:DesignWidth="400"
+			 DataContext="{Binding ValAndCon_VM, Source={StaticResource Locator}}"
+			 >
+ 
+	<StackPanel>
+		<!--                              -->
+		<!--    Validations example       -->
+		<!--                              -->
+		<Border Style="{StaticResource MyDefaultBorderTemplate}">
+			<Grid >
+				<a:ApexGrid Columns="Auto,*,Auto" Rows="Auto,Auto,Auto">
+					<TextBlock  Name="Txtblk_Validation0"
+								Style="{StaticResource MyTextBlockTemplate}" Text="Validation Examples: "
+								Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="3" 
+								VerticalAlignment="Center" Margin="5" Foreground="White" FontSize="14"
+					/>
+					<!--    Following 2 lines are for the validations examples      -->
+					<!--    Hover over TextBox to read error message.               -->
+					<TextBlock  Name="Txtblk_Validation1"
+							Style="{StaticResource MyTextBlockTemplate}" Text="Example_Validation: "
+							Grid.Row="1" Grid.Column="0" Margin="5" 
+					/>
+					<TextBox    Name="Txtbx_Validation1"
+							Grid.Row="1" Grid.Column="1" Margin="5" >
+						<TextBox.Text>
+							<Binding Path="FirstVal" UpdateSourceTrigger="PropertyChanged" >
+								<Binding.ValidationRules>
+									<validations:Example_Validation ValidatesOnTargetUpdated="True" />
+								</Binding.ValidationRules>
+							</Binding>
+						</TextBox.Text>
+					</TextBox>
+
+					<TextBlock  Name="Txtblk_Validation2"
+							Style="{StaticResource MyTextBlockTemplate}" Text="2nd Example_Validation: "
+							Grid.Row="2" Grid.Column="0" Margin="5" 
+					/>
+					<TextBox   Name="Txtbx_Validation2"
+							Grid.Row="2" Grid.Column="1" Margin="5" >
+						<TextBox.Text>
+							<Binding Path="SecondVal" UpdateSourceTrigger="PropertyChanged" >
+								<Binding.ValidationRules>
+									<validations:SecondExample_Validation ValidatesOnTargetUpdated="True" />
+								</Binding.ValidationRules>
+							</Binding>
+						</TextBox.Text>
+					</TextBox>
+				</a:ApexGrid>
+			</Grid>
+		</Border>
+		<!--                              -->
+		<!--    Converters example        -->
+		<!--                              -->
+		<Border Style="{StaticResource MyDefaultBorderTemplate}">
+			<Grid >
+				<a:ApexGrid Columns="Auto,*,Auto" 
+						Rows="Auto,Auto,Auto,auto">
+					<TextBlock  Name="Txtblk_Converter0"
+								Style="{StaticResource MyTextBlockTemplate}" Text="Converter Examples: "
+								Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="3" 
+								VerticalAlignment="Center" Margin="5" Foreground="White" FontSize="14"
+					/>
+					<!--    Following 3 lines are for the converter examples.                                    -->
+					<!--    See what happens on empty value, any value, and value that contains the word unicorn -->
+					<TextBlock  Name="Txtblk_Converter1"
+							Style="{StaticResource MyTextBlockTemplate}" Text="Write something: "
+							Grid.Row="1" Grid.Column="0" Margin="5" 
+					/>
+					<TextBox    Name="Txtbx_Converter1"
+							Grid.Row="1" Grid.Column="1" Margin="5"  >
+						<TextBox.Text>
+							<Binding Path="ThirdVal" UpdateSourceTrigger="PropertyChanged" />
+						</TextBox.Text>
+					</TextBox>
+					<TextBlock  Name="Txtblk_Converter2"
+							Style="{StaticResource MyTextBlockTemplate}" Text="Converter get: "
+							Grid.Row="2" Grid.Column="0" Margin="5" 
+					/>
+					<TextBlock  Name="Txtblk_Converter3"
+							Grid.Row="2" Grid.Column="1" Margin="5"  
+							Style="{StaticResource MyTextBlockTemplate}" 
+							Text="{Binding ThirdVal}" 
+					/>
+					<TextBlock  Name="Txtblk_Converter4"
+							Style="{StaticResource MyTextBlockTemplate}" Text="Converter result: "
+							Grid.Row="3" Grid.Column="0" Margin="5" 
+					/>
+					<TextBlock  Name="Txtblk_Converter5"
+							Grid.Row="3" Grid.Column="1" Margin="5"  
+							Style="{StaticResource MyTextBlockTemplate}" 
+							Text="{Binding ThirdVal, Converter={StaticResource CommentsConverter}}" 
+					/>
+				</a:ApexGrid>
+			</Grid>
+		</Border>
+		<!--                                                -->
+		<!--     Enable / Disable button Example            -->
+		<!--     Plus combination of bothe of the above     -->
+		<!--                                                -->
+		<Border Style="{StaticResource MyDefaultBorderTemplate}">
+			<Grid >
+				<a:ApexGrid Columns="Auto,*,Auto" Rows="Auto,Auto,Auto">
+					<TextBlock  Name="Txtblk_Both0"
+								Style="{StaticResource MyTextBlockTemplate}" Text="Button Enable/Disable Examples: "
+								Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="3" 
+								VerticalAlignment="Center" Margin="5" Foreground="White" FontSize="14"
+					/>
+					<!--    Following is an example of using the button Command.        -->
+					<!--    As a totally free of charge bonus you also get:             -->
+					<!--      * CommandParamater                                        -->
+					<!--      * CanExecute (look at the view model for more)            -->
+					<TextBlock  Name="Txtblk_Command1"
+							Style="{StaticResource MyTextBlockTemplate}" Text="Enter a number: "
+							Grid.Row="1" Grid.Column="0" Margin="5" 
+					/>
+					<TextBox	Name="Txtbx_NamesAmount" 
+								Grid.Row="1" Grid.Column="1" Margin="5">
+						<TextBox.Text>
+							<Binding Path="BtnExampleNumber" UpdateSourceTrigger="PropertyChanged" >
+								<Binding.ValidationRules>
+									<validations:IsInt_Validation ValidatesOnTargetUpdated="True" />
+								</Binding.ValidationRules>
+							</Binding>
+						</TextBox.Text>
+					</TextBox>
+					<TextBlock  Name="Txtblk_Command2"
+							Style="{StaticResource MyTextBlockTemplate}" Text="Button enabled for valid numbers >9 "
+							Grid.Row="2" Grid.Column="0" Margin="5" 
+					/>
+					<Button Content="Does nothing" 
+						    Grid.Row="2" Grid.Column="1" 
+						    Margin="5" Padding="5"
+						    HorizontalAlignment="Right"
+						    Command="{Binding Path=BtnDoesNothing_Command}" 
+						    IsDefault="True" Height="25">
+						<Button.Style>
+							<!--                                                    -->
+							<!--    This is the style if you have one condition     -->
+							<!--                                                    -->
+
+							<!--<Style TargetType="Button">
+								<Setter Property="IsEnabled" Value="False"/>
+								<Style.Triggers>
+									<DataTrigger Binding="{Binding Path=CanDoesNothingExecute}" Value="True">
+										<Setter Property="IsEnabled" Value="True" />
+									</DataTrigger>
+								</Style.Triggers>
+							</Style>-->
+
+							<!--                                                         -->
+							<!--    This is the style if you have MULTIPLE condition     -->
+							<!--    In our case: number > 9 AND no errors on textbox     -->
+							<!--                                                         -->
+							<Style TargetType="{x:Type Button}">
+								<Setter Property="IsEnabled" Value="false" />
+								<Style.Triggers>
+									<MultiDataTrigger>
+										<MultiDataTrigger.Conditions>
+											<Condition Binding="{Binding ElementName=Txtbx_NamesAmount, Path=(Validation.HasError)}" Value="false" />
+											<Condition Binding="{Binding Path=CanDoesNothingExecute}" Value="True" />
+										</MultiDataTrigger.Conditions>
+										<Setter Property="IsEnabled" Value="true" />
+									</MultiDataTrigger>
+								</Style.Triggers>
+							</Style>
+						</Button.Style>
+					</Button>
+				</a:ApexGrid>
+			</Grid>
+		</Border>
+		
+	</StackPanel>
+</UserControl>

@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="MVVM_Template_Project.Views.Random_View"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+			 xmlns:command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras"
+			 xmlns:a="clr-namespace:Apex.Controls"
+			 Name="Mvvm_Template_Demo"
+			 mc:Ignorable="d" 
+			 d:DesignHeight="500" d:DesignWidth="400"
+			 DataContext="{Binding Random_VM, Source={StaticResource Locator}}"
+			 >
+	
+		<StackPanel>
+			<!--                              -->
+			<!--    Enum examlpe              -->
+			<!--                              -->
+			<Border Style="{StaticResource MyDefaultBorderTemplate}">
+				<Grid >
+					<a:ApexGrid Columns="Auto,*,Auto" >
+						<!--    Binding to my Enum collection           -->
+						<!--    You get also design time data here      -->
+						<TextBlock  Style="{StaticResource MyTextBlockTemplate}" Text="My Enums: "
+									Margin="5" 
+						/>
+						<ComboBox	Name="Cmb_Names" ItemsSource="{Binding EnumCollection}" 
+									IsTextSearchEnabled="true" IsEditable="False" 
+									Grid.Row="0" Grid.Column="1" Margin="5"
+									TabIndex="1" SelectedIndex="0"                              
+						/>
+					</a:ApexGrid>
+				</Grid>
+			</Border>
+			<!--                              -->
+			<!--    Random people example     -->
+			<!--                              -->
+			<Border Style="{StaticResource MyDefaultBorderTemplate}">
+				<Grid >
+					<a:ApexGrid Columns="Auto,*,Auto" 
+								Rows="Auto,Auto,Auto,auto,auto,auto,auto,auto,auto,auto,auto">
+
+						<!--    Random people.                          -->
+						<!--    You get also design time data here      -->
+						<TextBlock  Style="{StaticResource MyTextBlockTemplate}" 
+									Text="Random people:"
+									Margin="5" Grid.ColumnSpan="3" />
+						<!--    Using a Datagrid, plus showing how to use.    -->
+						<!--    the interaction triggers:                     -->
+						<DataGrid Name="Dtgd_People"
+								  ItemsSource="{Binding PeopelCollection}"
+								  AutoGenerateColumns="False"
+								  CanUserAddRows="False"
+								  Grid.Row="1" Grid.ColumnSpan="3"
+								  MaxHeight="210" GridLinesVisibility="Horizontal">
+							<DataGrid.Columns>
+								<DataGridTextColumn Binding="{Binding Name}"
+											Header="Name" IsReadOnly="True" />
+								<DataGridTextColumn Binding="{Binding Phone}"
+											Header="Phone" IsReadOnly="True" />
+								<DataGridTextColumn Binding="{Binding BirthDate}"
+											Header="BirthDate " IsReadOnly="True"/>
+								<DataGridTemplateColumn Header="A Color" IsReadOnly="True">
+									<DataGridTemplateColumn.CellTemplate>
+										<DataTemplate>
+											<Grid Background="{Binding SomeColor}" />
+										</DataTemplate>
+									</DataGridTemplateColumn.CellTemplate>
+								</DataGridTemplateColumn>
+							</DataGrid.Columns>
+							<!--    An example of using Windows.Interactivity.                  -->
+							<!--    When someone double clicks on the list box, we'll           -->
+							<!--    pop up a message box telling the user which name was        -->
+							<!--    selected. You can do whatever else you want :)              -->
+							<i:Interaction.Triggers>
+								<i:EventTrigger EventName="MouseDoubleClick">
+									<command:EventToCommand Command="{Binding ListBoxDoubleClick_Command}" 
+														CommandParameter="{Binding ElementName=Dtgd_People,Path=SelectedItem}" />
+								</i:EventTrigger>
+							</i:Interaction.Triggers>
+						</DataGrid>
+						<TextBlock  Style="{StaticResource MyTextBlockTemplate}" 
+									Text="Double click on the listbox to pop up a message dialog."
+									Grid.Row="2" Grid.Column="0" Margin="5" Grid.ColumnSpan="3"
+						/>
+
+						<!--    Following is an example of using the button Command.        -->
+						<!--    As a totally free of charge bonus you also get:             -->
+						<!--      * CommandParamater                                        -->
+						<!--      * CanExecute (look at the view model for more)            -->
+						<TextBlock  Name="Txtblk_Command1"
+									Style="{StaticResource MyTextBlockTemplate}" Text="Names to refresh: "
+									Grid.Row="7" Grid.Column="0" Margin="5" 
+						/>
+						<ComboBox	Name="Cmb_NamesAmount" 
+									IsEditable="False" 
+									Grid.Row="7" Grid.Column="1" Margin="5"
+									SelectedIndex="0" ItemsSource="{Binding RefreshNamesOptions}" 
+						/>
+						<TextBlock  Name="Txtblk_Command2"
+									Style="{StaticResource MyTextBlockTemplate}" Text="(must be bigger than 3) "
+									Grid.Row="8" Grid.Column="0" Margin="5" 
+						/>
+						<Button Content="Refresh names command" 
+								Grid.Row="8" Grid.Column="1" 
+								Margin="5" Padding="5"
+								HorizontalAlignment="Right"
+								Command="{Binding Path=RefreshPeople_Command}" 
+								CommandParameter="{Binding ElementName=Cmb_NamesAmount, Path=SelectedItem}" 
+								IsDefault="True" 
+						/>
+					</a:ApexGrid>
+				</Grid>
+			</Border>
+		</StackPanel>
+</UserControl>

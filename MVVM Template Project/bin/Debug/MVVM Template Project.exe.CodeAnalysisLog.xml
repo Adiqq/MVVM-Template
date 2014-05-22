@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="e:\programy\microsoft visual studio 11.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="11.0">
+ <Targets>
+  <Target Name="E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\MVVM Template Project.exe">
+   <Modules>
+    <Module Name="mvvm template project.exe">
+     <Namespaces>
+      <Namespace Name="MVVM_Template_Project.ViewModels">
+       <Types>
+        <Type Name="Main_ViewModel" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2014-05-22 17:33:56Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="e:\Pobrane\mvvm-template\MVVM Template Project\ViewModels" File="Main_ViewModel.cs" Line="17">'Main_ViewModel.Main_ViewModel()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Main_ViewModel..ctor()&#xD;&#xA;ViewModelBase.get_IsInDesignMode():Boolean&#xD;&#xA;Main_ViewModel.set_StatusBarMessage(String):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged(String):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Random_ViewModel" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(MVVM_Template_Project.Models.IDataService)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2014-05-22 17:33:56Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="e:\Pobrane\mvvm-template\MVVM Template Project\ViewModels" File="Random_ViewModel.cs" Line="21">'Random_ViewModel.Random_ViewModel(IDataService)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;Random_ViewModel..ctor(IDataService)&#xD;&#xA;Random_ViewModel.set_PeopelCollection(ObservableCollection&lt;Person&gt;):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged(String):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ValidationsConvertes_ViewModel" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor(MVVM_Template_Project.Models.IDataService)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2014-05-22 17:33:56Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="e:\Pobrane\mvvm-template\MVVM Template Project\ViewModels" File="ValidationsConvertes_ViewModel.cs" Line="15">'ValidationsConvertes_ViewModel.ValidationsConvertes_ViewModel(IDataService)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;ValidationsConvertes_ViewModel..ctor(IDataService)&#xD;&#xA;ViewModelBase.get_IsInDesignMode():Boolean&#xD;&#xA;ValidationsConvertes_ViewModel.set_ThirdVal(String):Void&#xD;&#xA;ObservableObject.RaisePropertyChanged(String):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
+   <Name>Do not call overridable methods in constructors</Name>
+   <Description>Virtual methods defined on the class should not be called from constructors. If a derived class has overridden the method, the derived class version will be called (before the derived class constructor is called).</Description>
+   <Resolution Name="Default">{0} contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: {1}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182331(VS.100).aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="usagerules.dll" Version="11.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

@@ -1,0 +1,45 @@
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\MVVM Template Project.csprojResolveAssemblyReference.cache
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\About_View.baml
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\MainWindow.baml
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\MvvmLight_View.baml
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\About_View.g.cs
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\MainWindow.g.cs
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\MvvmLight_View.g.cs
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\ValidationsConvertes_View.g.cs
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\App.g.cs
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\MVVM Template Project_MarkupCompile.cache
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\MVVM Template Project_MarkupCompile.lref
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\MVVM Template Project.exe
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\MVVM Template Project.pdb
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\MVVM Template Project.exe.CodeAnalysisLog.xml
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\MVVM Template Project.exe.lastcodeanalysissucceeded
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\GalaSoft.MvvmLight.dll
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\System.Windows.Interactivity.dll
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\GalaSoft.MvvmLight.pdb
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\GalaSoft.MvvmLight.xml
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\System.Windows.Interactivity.xml
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\Random_View.g.cs
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\App.baml
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Auxiliary\Resources\DataTemplates.baml
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Auxiliary\Resources\Styles.baml
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\Random_View.baml
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\Views\ValidationsConvertes_View.baml
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\MVVM Template Project.g.resources
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\MVVM_Template_Project.Properties.Resources.resources
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\MVVM Template Project.csproj.GenerateResource.Cache
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\MVVM Template Project.exe
+E:\Pobrane\mvvm-template\MVVM Template Project\obj\Debug\MVVM Template Project.pdb
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\MVVM Template Project.exe.config
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\Microsoft.Practices.Unity.dll
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\Microsoft.Practices.Unity.xml
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+E:\Pobrane\mvvm-template\MVVM Template Project\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml

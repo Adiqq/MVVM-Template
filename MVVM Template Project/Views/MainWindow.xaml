@@ -1,0 +1,96 @@
+﻿<Window x:Class="MVVM_Template_Project.Views.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:ignore="http://www.ignore.com"
+		mc:Ignorable="d ignore"
+		Height="500"
+		Width="500"
+		Title="Noctis - MVVM Light Template"
+		DataContext="{Binding Main, Source={StaticResource Locator}}">
+	
+	<Window.Resources>
+	  
+	</Window.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<DockPanel >
+			<!--                                                           -->
+			<!--    Your application menu. You have default commands, and  -->
+			<!--    you can add your own commands. They work like nomrmal  -->
+			<!--    button commands, so you can reuse them                 -->
+			<!--                                                           -->
+			<Menu DockPanel.Dock="Top"
+			  HorizontalAlignment="Left"
+			  Background="White"
+			  BorderBrush="Black"
+				IsTabStop="False"
+			>
+				<!--    Default application commands:   -->
+				<MenuItem Header="_Default commands" IsTabStop="False">
+					<MenuItem Command="ApplicationCommands.Copy" />
+					<MenuItem Command="ApplicationCommands.Cut" />
+					<MenuItem Command="ApplicationCommands.Paste" />
+				</MenuItem>
+				<!--    Our custom commands:   -->
+				<!--    Note we're sending a string here, so in our main view model:        -->
+				<!--    we'll have the command, of type RelayCommand<string>, and it        -->
+				<!--    will send the message to the messanger. In the Random_VM, we        -->
+				<!--    will subscribe to that event, and fire the Refresh people method    -->
+				<MenuItem Header="_Custom commands" IsTabStop="False">
+					<MenuItem Header="Refresh 7 people"
+						  Command="{Binding RefreshPeopleMenu_Command}" 
+						  CommandParameter="7"  />
+					<MenuItem Header="Refresh 3 people"
+						  Command="{Binding RefreshPeopleMenu_Command}" 
+						  CommandParameter="3"  />
+				</MenuItem>
+			</Menu>
+			<!--                                                                    -->
+			<!--    StatusBar at the bottom.  Binds to a property on the main view  -->
+			<!--    model. Whenever you want to set it, send a message to the       -->
+			<!--    Messenger, and it'll update this. Look at the view model        -->
+			<!--    constructor for more details                                    -->
+			<!--                                                                    -->
+			<StatusBar  DockPanel.Dock="Bottom"
+					Height="30"
+					IsTabStop="False">
+				<StatusBarItem HorizontalAlignment="Right">
+					<TextBlock Name="StatBarText"
+						   Text="{Binding StatusBarMessage}" 
+						   Margin="0 0 30 0"/>
+				</StatusBarItem>
+			</StatusBar>
+
+			<!--                                                        -->
+			<!--   Last child fills the dockbar, so this will take      -->
+			<!--    the "main" window and fill it.                      -->
+			<!--                                                        -->
+			
+			<!--    Use this to quickly copy/paste a new tab:
+				<TabItem Header=" ">
+		
+				</TabItem>
+			 -->
+			<TabControl>
+				<TabItem Header="Random Helper">
+					<ContentControl Content="{Binding Random_VM}"  />
+				</TabItem>
+			
+				<TabItem Header="Validations and Converters" HorizontalAlignment="Left" Width="158">
+					<ContentControl Content="{Binding ValAndCon_VM}"  />
+				</TabItem>
+			
+				<TabItem Header="MVVM Light">
+					<ContentControl Content="{Binding MvvmLight_VM}"  />
+				</TabItem>
+
+				<TabItem Header="About">
+					<ContentControl Content="{Binding About_VM}"  />
+				</TabItem>
+			</TabControl>
+		</DockPanel>
+	</Grid>
+		
+</Window>

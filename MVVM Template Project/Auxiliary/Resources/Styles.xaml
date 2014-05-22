@@ -1,0 +1,138 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:converters="clr-namespace:MVVM_Template_Project.Auxiliary.Converters"
+					xmlns:myConv="clr-namespace:MVVM_Template_Project.Auxiliary.Converters"
+					>
+
+	<!--   Trying to avoid the validation errors that are outputed to the console when     -->
+	<!--    a validation goes from invalid to valid.                                       -->
+	<myConv:ErrorContentConverter x:Key="ErrConv"></myConv:ErrorContentConverter>
+
+
+	<!--   This is an Example of a story board with an animation, that will make the error      -->
+	<!--   icon flash 3 times.   This Storyboard is used in the `myErrorTemplate` Style         -->
+	<Storyboard x:Key="FlashErrorIcon">
+		<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" 
+									   Storyboard.TargetProperty="(UIElement.Visibility)">
+			<DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Hidden}"/>
+			<DiscreteObjectKeyFrame KeyTime="00:00:00.7500000" Value="{x:Static Visibility.Visible}"/>
+			<DiscreteObjectKeyFrame KeyTime="00:00:01.5000000" Value="{x:Static Visibility.Hidden}"/>
+			<DiscreteObjectKeyFrame KeyTime="00:00:02.2500000" Value="{x:Static Visibility.Visible}"/>
+			<DiscreteObjectKeyFrame KeyTime="00:00:03.0000000" Value="{x:Static Visibility.Hidden}"/>
+			<DiscreteObjectKeyFrame KeyTime="00:00:03.7500000" Value="{x:Static Visibility.Visible}"/>
+		</ObjectAnimationUsingKeyFrames>
+	</Storyboard>
+
+	<!--   This is an Example of a style that will add a red border and a flashing icon to      -->
+	<!--   input fields if their validation fails                                               -->
+	<!--   Control's that are based on this style in my case are: TextBox, CheckBox, ComboBox   -->
+	<Style x:Key="myErrorTemplate" TargetType="Control">
+		<Setter Property="Validation.ErrorTemplate">
+			<Setter.Value>
+				<ControlTemplate>
+					<DockPanel LastChildFill="True">
+						<Ellipse DockPanel.Dock="Right" 
+								 ToolTip="{Binding ElementName=myControl, 
+									 Path=AdornedElement.(Validation.Errors),
+									 Converter={StaticResource ErrConv}}"
+								 Width="18" Height="18" 
+								 Margin="-25,0,0,0"
+								 StrokeThickness="1" Fill="Red" >
+						<Ellipse.Stroke>
+								<LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+									<GradientStop Color="#FFFA0404" Offset="0"/>
+									<GradientStop Color="#FFC9C7C7" Offset="1"/>
+								</LinearGradientBrush>
+							</Ellipse.Stroke>
+							<Ellipse.Triggers>
+								<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+									<BeginStoryboard Storyboard="{StaticResource FlashErrorIcon}"/>
+								</EventTrigger>
+							</Ellipse.Triggers>
+						</Ellipse>
+						<TextBlock DockPanel.Dock="Right" 
+								ToolTip="{Binding ElementName=myControl, 
+									 Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+								Foreground="White"
+								FontSize="11pt" 
+								Margin="-15,2,0,0" FontWeight="Bold">!
+							<TextBlock.Triggers>
+								<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+									<BeginStoryboard Storyboard="{StaticResource FlashErrorIcon}"/>
+								</EventTrigger>
+							</TextBlock.Triggers>
+						</TextBlock>
+						<Border BorderBrush="Red" BorderThickness="1">
+							<AdornedElementPlaceholder Name="myControl"/>
+						</Border>
+					</DockPanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+		<Style.Triggers>
+			<Trigger Property="Validation.HasError" Value="true">
+				<Setter Property="ToolTip"
+						Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+										Path= (Validation.Errors),
+										Converter={StaticResource ErrConv}}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	
+	
+	<!-- 
+	<Style.Triggers>
+			<Trigger Property="Validation.HasError" Value="true">
+				<Setter Property="ToolTip"
+						Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+										Path=(Validation.Errors)[0].ErrorContent }"/>
+			</Trigger>
+		</Style.Triggers>
+	
+	<Ellipse DockPanel.Dock="Right" 
+								 ToolTip="{Binding ElementName=myControl, 
+									 Path=AdornedElement.(Validation.Errors)[0].ErrorContent,
+									 Converter={StaticResource ErrConv}}"
+								 Width="18" Height="18" 
+								 Margin="-25,0,0,0"
+								 StrokeThickness="1" Fill="Red" >		
+	
+ 
+	-->
+
+	<!--    The following styles are based on 'myErrorTemplate' which will          -->
+	<!--    flash a red icon 3 times if the validation failes                       -->
+	<Style TargetType="TextBox"  BasedOn="{StaticResource myErrorTemplate}" />
+	<Style TargetType="CheckBox" BasedOn="{StaticResource myErrorTemplate}" />
+	<Style TargetType="ComboBox" BasedOn="{StaticResource myErrorTemplate}" />
+
+
+	<!--    The following styles are for setting a consistant look and feel     -->
+	<!--    to your application                                                 -->
+	<Style x:Key="MyDefaultBorderTemplate" TargetType="{x:Type Border}">
+		<Setter Property="CornerRadius" Value="5" />
+		<Setter Property="Margin" Value="2" />
+		<Setter Property="BorderBrush" Value="Teal" />
+		<Setter Property="BorderThickness" Value="3" />
+		<Setter Property="Padding" Value="5" />
+		<Setter Property="Background" Value="MidnightBlue" />
+	</Style>
+
+	<Style TargetType="Label" x:Key="MyLabelTemplate">
+		<Setter Property="Foreground" Value="Yellow" />
+		<Setter Property="Margin" Value="5"></Setter>
+	</Style>
+
+	<Style TargetType="Button" x:Key="MyButtonTemplate">
+		<Setter Property="Foreground" Value="DarkBlue" />
+		<Setter Property="Background" Value="LightSteelBlue"></Setter>
+		<Setter Property="Margin" Value="5"></Setter>
+	</Style>
+
+	<Style TargetType="TextBlock" x:Key="MyTextBlockTemplate">
+		<Setter Property="Foreground" Value="LightGreen" />
+		<Setter Property="Margin" Value="5 2"></Setter>
+	</Style>
+
+
+</ResourceDictionary>

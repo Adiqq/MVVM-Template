@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="MVVM_Template_Project.Views.About_View"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 mc:Ignorable="d" 
+			 d:DesignHeight="462" d:DesignWidth="525" 
+			 DataContext="{Binding About_VM, Source={StaticResource Locator}}">
+
+	<Border Style="{StaticResource MyDefaultBorderTemplate}">
+
+		<DockPanel LastChildFill="True" Margin="5" VerticalAlignment="Top" Background="MidnightBlue">
+
+			<Image Height="100" Width="100" Source="/Auxiliary/Resources/Headshot.JPG" 
+			   DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Top"
+			/>
+
+			<StackPanel>
+
+				<TextBlock TextWrapping="Wrap" Style="{StaticResource MyTextBlockTemplate}"
+						   Text="{Binding Hello}" />
+
+				<Label Style="{StaticResource MyLabelTemplate}"  Margin="0 20 0 0 ">Interesting Technologies for this project:</Label>
+				<TextBlock TextWrapping="Wrap" Style="{StaticResource MyTextBlockTemplate}" Margin="10 0 ">
+					• MVVM-Light / Messaging
+				</TextBlock>
+				<TextBlock TextWrapping="Wrap" Style="{StaticResource MyTextBlockTemplate}" Margin="10 0 ">
+					• Random Helper
+				</TextBlock>
+				<TextBlock TextWrapping="Wrap" Style="{StaticResource MyTextBlockTemplate}" Margin="10 0 ">
+					• Converters
+				</TextBlock>
+				<TextBlock TextWrapping="Wrap" Style="{StaticResource MyTextBlockTemplate}" Margin="10 0 ">
+					• GUI, Validations, IDataErrorInfo
+				</TextBlock>
+
+				<Label Style="{StaticResource MyLabelTemplate}"  Margin="0 20 0 0 ">
+					You can look at my profiles at:
+				</Label>
+				
+				<TextBlock Style="{StaticResource MyTextBlockTemplate}"
+						   TextWrapping="Wrap" >
+					StackOverflow: 
+					<Hyperlink 
+						NavigateUri="http://stackoverflow.com/users/1698987/noctis"
+						RequestNavigate="NavigateToSO">
+						link
+					</Hyperlink>.
+				</TextBlock>
+				
+				<TextBlock  Style="{StaticResource MyTextBlockTemplate}"
+						   TextWrapping="Wrap" >
+					 CodeProject:
+					<Hyperlink 
+						NavigateUri="http://www.codeproject.com/Members/_Noctis_"
+						RequestNavigate="NavigateToCP">
+						 link
+					</Hyperlink>.
+				</TextBlock>
+
+				<Label Style="{StaticResource MyLabelTemplate}"  Margin="0 20 0 0 "
+					   >Please leave comments / suggestions / bugs or requests</Label>
+				<Label Style="{StaticResource MyLabelTemplate}"  Margin="0 -10 0 0 "
+					   >on the original article: </Label>
+
+				<TextBlock  Style="{StaticResource MyTextBlockTemplate}"
+						   TextWrapping="Wrap" >
+					<Hyperlink 
+						NavigateUri="http://www.codeproject.com/Articles/768427/The-big-MVVM-Template-"
+						RequestNavigate="NavigateToOriginal">
+						link to original article 
+					</Hyperlink>.
+				</TextBlock>
+				
+			</StackPanel>
+		</DockPanel>
+	</Border>
+</UserControl>
