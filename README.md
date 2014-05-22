@@ -1,4 +1,8 @@
-# My MVVM Template - Noctis.
+# My MVVM Template - Noctis modified by Adiqq
+
+## Changes:
+Updateded packages.
+SimpleIOC replaced with Unity 3.
 
 ## Reasoning:
 The reason it came to be is that there are lots of small things I hate doing 
